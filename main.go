@@ -11,7 +11,7 @@ func main() {
 	const ConferenceTicket = 50
 	var remainingTikets int = 50
 
-	// array has fix length  and less dyanamic than other language
+	//array has fix length  and less dyanamic than other language
 	//var bookings [50]string
 	// slices is another data type in go which is abstraction of array.
 	// but is more efficient and dynamic to add element and delete
@@ -37,7 +37,13 @@ func main() {
 		fmt.Println("Enter your tickets: ")
 		fmt.Scan(&UserTickets)
 
-		if UserTickets <= remainingTikets {
+		var isValidName = len(FirstName) >= 2 && len(LastName) >= 2
+		var isValidEmail = strings.Contains(email, "@")
+		var isValidTicketNumber = UserTickets > 0 && UserTickets <= remainingTikets
+
+		//var isValidCity = city == "Singapoor" || city == "London"
+
+		if isValidName && isValidEmail && isValidTicketNumber {
 
 			//update remaining tickets
 			remainingTikets = remainingTikets - UserTickets
@@ -70,8 +76,15 @@ func main() {
 				break
 			}
 		} else {
-			fmt.Printf("We only have %v tickets available, you can't book %v ticketss\n", remainingTikets, UserTickets)
-			continue
+			if !isValidName {
+				fmt.Println("First name or lastname you enter is too short")
+			}
+			if !isValidEmail {
+				fmt.Println("email address is invalid")
+			}
+			if !isValidTicketNumber {
+				fmt.Println("number of ticket you enter is invalid")
+			}
 
 		}
 	}

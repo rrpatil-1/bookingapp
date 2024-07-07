@@ -12,4 +12,10 @@ func main() {
 	fmt.Println("slice:", numbers)
 	fmt.Println("len:", len(numbers))
 	fmt.Println("capacity:", cap(numbers))
+
+	stock := make([]int, 4)
+
+	fmt.Println("slice:", stock)
+	fmt.Println("len:", len(stock))
+	fmt.Println("capacity:", cap(stock))
 }
